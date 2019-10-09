@@ -1,0 +1,18 @@
+<h1>Forecasts</h1>
+{% for forecast in forecasts %}
+<h2>{{ forecast.date|date('Y-m-d') }}</h2>
+<ul>
+    <li>Min temp: {{ forecast.minTempCelcius }}C</li>
+    <li>Max temp: {{ forecast.maxTempCelcius }}C</li>
+    {% if forecast.dayHasPrecipitation %}
+        <li> There will be {{ forecast.dayPrecipitationIntensity }} {{ forecast.dayPrecipitationType }} today.</li>
+    {% else %}
+        <li>There will be no rain today.</li>
+    {% endif %}
+    {% if forecast.nightHasPrecipitation %}
+        <li> There will be {{ forecast.nightPrecipitationIntensity }} {{ forecast.nightPrecipitationType }} tonight.</li>
+    {% else %}
+        <li>There will be no rain tonight.</li>
+    {% endif %}
+</ul>
+{% endfor %}
